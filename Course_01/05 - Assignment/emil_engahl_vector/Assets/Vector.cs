@@ -8,7 +8,7 @@ public class Vector : ProcessingLite.GP21
 {
 
     public float diameter = 0.5f;
-    public int x ;
+    public int x;
     public int y = 5;
     public bool mouseWasPressed;
     public bool mouseWasReleased;
@@ -22,7 +22,9 @@ public class Vector : ProcessingLite.GP21
     public float speed;
     public float cirkelStatsX;
     public float cirkelStatsY;
-    public 
+
+    public Vector2 movement;
+    
   
 
     // Start is called before the first frame update
@@ -51,50 +53,41 @@ public class Vector : ProcessingLite.GP21
         {
             mouseWasDragged = true;
             Line(cirkelPosition.x, cirkelPosition.y, MouseX, MouseY);
-
-            mousePosition = new Vector2(MouseX, MouseY);
-                
+            mousePosition = new Vector2(MouseX, MouseY);   
             lineCalc = mousePosition - cirkelPosition;
-            magnitude = lineCalc.magnitude;
-
+            
         }
         
         if (Input.GetMouseButtonUp(0))
         {
             mouseWasReleased = true;
-
         }
 
-        if (magnitude > 8)
-        {
-            speed = magnitude * speedLimit;
-            Debug.Log(magnitude);
-        }
 
         Circle(cirkelPosition.x, cirkelPosition.y, diameter);
 
-        if (cirkelPosition.x > Height)
+        if (cirkelPosition.x >= 17.79328 || cirkelPosition.x <= 0)
         {
-            Circle(cirkelPosition.x -= lineCalc.x * Time.deltaTime, cirkelPosition.y += lineCalc.y * Time.deltaTime, diameter);
-        }
-        else if (cirkelPosition.y > Width)
-
-        {
-            Circle(cirkelPosition.x += lineCalc.x * Time.deltaTime, cirkelPosition.y -= lineCalc.y * Time.deltaTime, diameter);
-        }
-        else
-        {
-            Circle(cirkelPosition.x += lineCalc.x * Time.deltaTime, cirkelPosition.y += lineCalc.y * Time.deltaTime, diameter);
+            lineCalc.x *=-1;
         }
 
+        if (cirkelPosition.y >= 10 || cirkelPosition.y <=0)
+        {
+            lineCalc.y *= -1;
+        }
 
-        
-       
+  
+        magnitude = lineCalc.magnitude;
 
 
+        if (magnitude > 10)
+        {
+            lineCalc *= speedLimit;
+        }
+          
+        movement = cirkelPosition += lineCalc * Time.deltaTime;
 
-
-        //Height // Width
+        Circle(movement.x , movement.y, diameter);
 
 
 
