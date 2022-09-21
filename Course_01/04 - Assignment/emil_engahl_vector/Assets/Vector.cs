@@ -55,7 +55,6 @@ public class Vector : ProcessingLite.GP21
             Line(cirkelPosition.x, cirkelPosition.y, MouseX, MouseY);
             mousePosition = new Vector2(MouseX, MouseY);   
             lineCalc = mousePosition - cirkelPosition;
-            
         }
         
         if (Input.GetMouseButtonUp(0))
@@ -88,8 +87,6 @@ public class Vector : ProcessingLite.GP21
         movement = cirkelPosition += lineCalc * Time.deltaTime;
 
         Circle(movement.x , movement.y, diameter);
-
-
 
     }
 

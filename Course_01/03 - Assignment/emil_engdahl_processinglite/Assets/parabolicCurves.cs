@@ -24,9 +24,9 @@ public class parabolicCurves: ProcessingLite.GP21
 
             if (i % 3 == 0)
             {
-                int r = Random.Range(0, 256);
-                int g = Random.Range(0, 256);
-                int b = Random.Range(0, 256);
+                int r = UnityEngine.Random.Range(0, 256);
+                int g = UnityEngine.Random.Range(0, 256);
+                int b = UnityEngine.Random.Range(0, 256);
                 Stroke(r, g, b); // Set var tredje col
             }
             else
@@ -37,11 +37,11 @@ public class parabolicCurves: ProcessingLite.GP21
         }
 
 
-      //  Lek med att börja i höger top hörne
-        for (int i = 0; i < Height / spaceBetweenLines; i++)
-        {
-            Line(Height, Height, Width - i, Height - i);
-        }
+      ////  Lek med att börja i höger top hörne
+      //  for (int i = 0; i < Height / spaceBetweenLines; i++)
+      //  {
+      //      Line(Height, Height, Width - i, Height - i);
+      //  }
 
 
 
