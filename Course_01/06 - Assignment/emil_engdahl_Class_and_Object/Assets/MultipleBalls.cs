@@ -14,10 +14,9 @@ public class MultipleBalls : ProcessingLite.GP21
         for (int i = 0; i < numberOfBalls; i++)
         {
             balls[i] = new Ball(Width / 2, Height / 2);
-           
         }
     }
-   
+
     void Update()
     {
 
@@ -25,7 +24,6 @@ public class MultipleBalls : ProcessingLite.GP21
         {
             balls[i].UpdatePos();
             balls[i].Draw();
-         
         }
     }
 }

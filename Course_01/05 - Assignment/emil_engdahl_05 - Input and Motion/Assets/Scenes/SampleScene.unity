@@ -135,8 +135,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
-  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -217,58 +215,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f3d4d5e4e16df949a4601cf4c90ba93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPosition: {x: 0, y: 0}
-  playerPosition2: {x: 0, y: 0}
-  acceleration2: {x: 0, y: 0}
-  velocity: {x: 0, y: 0}
-  maxSpeed: 10
-  speed: 5
-  magnitude2: 0
-  magnitude: 0
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cfe8e9a212a30e4fa9dc8c852e0630b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  speed2: 2
-  diameter: 2
-  acceleration: {x: 0, y: 0}
-  input: {x: 0, y: 0}
-  input2: {x: 0, y: 0}
-  velocity: {x: 0, y: 0}
-  velocity2: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
-  direction2: {x: 0, y: 0}
-  circlePosition: {x: 0, y: 0}
-  circlePosition2: {x: 0, y: 0}
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9d1c3997b5aad4db2d69bbdf9b9a3f, type: 3}
+  m_Script: {fileID: 11500000, guid: c4ccacdc8335fea4ead427049bdea6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  maxSpeed: 0
   diameter: 2
+  input2: {x: 0, y: 0}
   acceleration: {x: 0, y: 0}
-  velocity2: {x: 0, y: 0}
-  cirkelPosition: {x: 0, y: 0}
-  cirkelPosition2: {x: 0, y: 0}

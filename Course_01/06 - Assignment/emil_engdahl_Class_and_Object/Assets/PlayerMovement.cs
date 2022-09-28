@@ -18,7 +18,6 @@ public class PlayerMovement : ProcessingLite.GP21
     {
         StrokeWeight(5);
 
-
     }
 
 
