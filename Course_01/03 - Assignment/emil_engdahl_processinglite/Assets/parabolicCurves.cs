@@ -43,33 +43,6 @@ public class parabolicCurves: ProcessingLite.GP21
       //      Line(Height, Height, Width - i, Height - i);
       //  }
 
-
-
-
-
-        //for (int i = 0; i < Strokes + 1; i++)
-        //{
-        //    // goes pos1 -> pos2
-        //    //               |
-        //    //               V
-        //    //              pos3
-
-        //    //Take the first two positions find the diffrence then devide by the ammount of strokes wanted
-        //    Vector3 diff1 = (pos2.position - pos1.position) / Strokes;
-
-        //    Vector3 diff2 = (pos3.position - pos2.position) / Strokes;
-        //    if (i < 0)
-        //        i = 0;
-
-        //    Vector3 startPos = pos1.position + diff1 * i;
-
-        //    Vector3 endPos = pos2.position + diff2 * i;
-
-
-        //    Line(startPos.x, startPos.y, endPos.x, endPos.y);
-        //}
-
     }
-    
-
+   
 }
