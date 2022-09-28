@@ -5,7 +5,7 @@ using UnityEngine;
 public class BallDemo : ProcessingLite.GP21
 {
     Ball myBall;
-    CollisionCalc ballcalc;
+    //CollisionCalc ballcalc;
 
     void Start()
     {
@@ -17,6 +17,6 @@ public class BallDemo : ProcessingLite.GP21
     {
         myBall.UpdatePos();
         myBall.Draw();
-        ballcalc.BallCalc(5, 5, 5);
+      //  ballcalc.BallCalc(5, 5, 5);
     }
 }

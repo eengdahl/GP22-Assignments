@@ -12,7 +12,7 @@ public class PlayerMovement : ProcessingLite.GP21
     public Vector2 input;
     Vector2 direction;
     Vector2 velocity;
-    CollisionCalc playerCalc1;
+
 
     void Start()
     {
@@ -37,8 +37,8 @@ public class PlayerMovement : ProcessingLite.GP21
         player.UpdatePos();
         player.Draw();
 
-        playerCalc1 = new CollisionCalc();
-        playerCalc1.PlayerCalc(position.x, position.y, 0.5f);   
+       // playerCalc1 = new CollisionCalc();
+       // playerCalc1.PlayerCalc(position.x, position.y, 0.5f);   
 
        // player.CircleCollision(position.x, position.y, 0.5f, balls, float,float);
 

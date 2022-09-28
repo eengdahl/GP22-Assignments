@@ -24,25 +24,28 @@ class Ball : ProcessingLite.GP21
         velocity = new Vector2();
         velocity.x = Random.Range(0, 11) - 5;
         velocity.y = Random.Range(0, 11) - 5;
+
+
         r = (Random.Range(0, 255));
         g = (Random.Range(0, 255));
         b = (Random.Range(0, 255));
         Fill(r, g, b);
         Stroke(r, g, b);
-        
+
         size = Random.Range(0.3f, 3);
     }
 
     //Draw out ball
     public void Draw()
     {
+  
         Circle(position.x, position.y, size);
-        //Stroke(Random.Range(0, 255), Random.Range(0, 255), Random.Range(0, 255));
     }
 
     //Update our ball
     public void UpdatePos()
     {
+    
         position += velocity * Time.deltaTime;
 
         if (position.x >= 17.79328 || position.x <= 0)
