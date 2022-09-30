@@ -9,7 +9,7 @@ public class BallDemo : ProcessingLite.GP21
 
     void Start()
     {
-        myBall = new Ball(5, 5);
+        myBall = new Ball(5, 5, 5);
     }
 
     // Update is called once per frame

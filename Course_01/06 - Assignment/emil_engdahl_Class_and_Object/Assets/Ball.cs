@@ -5,26 +5,25 @@ using UnityEngine;
 class Ball : ProcessingLite.GP21
 {
     //Class variables
-    Vector2 position;   //Ball position
-    Vector2 velocity;   // Ball direction
-    float size;
+    public Vector2 position;
+    public Vector2 velocity;
+    public float size;
     int r;
     int g;
     int b;
 
+    public float ballPositionX;
+    public float ballPositionY;
+   
 
 
-    //Ball Constructor, called when we type new Ball(x, y);
-    public Ball(float x, float y)
+    public Ball(float x, float y, float s)
     {
-        //Set our position when we create the code.
         position = new Vector2(x, y);
 
-        //Create the velocity vector and give it a random direction.
         velocity = new Vector2();
         velocity.x = Random.Range(0, 11) - 5;
         velocity.y = Random.Range(0, 11) - 5;
-
 
         r = (Random.Range(0, 255));
         g = (Random.Range(0, 255));
@@ -32,20 +31,17 @@ class Ball : ProcessingLite.GP21
         Fill(r, g, b);
         Stroke(r, g, b);
 
-        size = Random.Range(0.3f, 3);
+  
+        size = s;
     }
 
-    //Draw out ball
     public void Draw()
     {
-  
         Circle(position.x, position.y, size);
     }
 
-    //Update our ball
     public void UpdatePos()
     {
-    
         position += velocity * Time.deltaTime;
 
         if (position.x >= 17.79328 || position.x <= 0)
@@ -57,8 +53,6 @@ class Ball : ProcessingLite.GP21
         {
             velocity.y *= -1;
         }
+
     }
-
-   
-
 }
