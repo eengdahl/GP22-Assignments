@@ -5,10 +5,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class Output : ProcessingLite.GP21
 {
     Ball[] balls = new Ball[10];
     PlayerClass player;
+
 
     public int numberOfBalls = 10;
     public Vector2 position;
@@ -57,7 +59,7 @@ public class Output : ProcessingLite.GP21
 
     bool CircleCollision(Vector2 playerVector, Vector2 ballVector, float ballSize)
     {
-        float maxDistance = 0.5f + ballSize ;
+        float maxDistance = 0.5f + ballSize;
         float x1 = playerVector.x;
         float y1 = playerVector.y;
         float x2 = ballVector.x;
@@ -87,9 +89,8 @@ public class Output : ProcessingLite.GP21
     public void Endscreen()
     {
         //background(255);
-
         Text("you lost!", Width / 2, Height / 2);
-        return;
+        return ;
         //todo: paus game
     }
 }

@@ -222,5 +222,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfBalls: 10
   position: {x: 0, y: 0}
-  playerPositionX: 0
-  playerPositionY: 0
+  playerPosition: {x: 0, y: 0}
+  size: 0
