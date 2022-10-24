@@ -7,14 +7,15 @@ public class Projectiles : MonoBehaviour
     public enum Weapons
     {
         Axe,
-        Fire,
+       // Fire,
         Earth,
         //Water,
-        //BasicMagic,
+        BasicMagic
         //EpicPink,
         //EpicFire
     }
     public GameObject Axe;
+    public GameObject BasicMagic;
 
     public void ActiveProjectile(Weapons activeProjectile)
     {
@@ -22,13 +23,15 @@ public class Projectiles : MonoBehaviour
         switch (activeProjectile)
         {
             case Weapons.Axe:
-                Debug.Log("0");
+             
                Instantiate(Axe, transform.position, transform.rotation);
                 break;
 
-            //case Weapons.Fire:
-            //    Debug.Log("1");
-            //    break;
+            case Weapons.BasicMagic:
+
+                Instantiate(BasicMagic, transform.position, transform.rotation);
+
+                break;
 
                 //case Weapons.Earth:
                 //    Debug.Log("2");

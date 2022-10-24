@@ -11,6 +11,8 @@ public class GroundScript : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();
             audioSource.Play();
+
+            Destroy(other.gameObject);
         }   
     }
 }
