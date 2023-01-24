@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "32382738298",
+    "firebase_url": "https://pirategame-656e3-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "pirategame-656e3",
+    "storage_bucket": "pirategame-656e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32382738298:android:b2da345e51c892fc2100c3",
+        "android_client_info": {
+          "package_name": "com.YRGO.PirateGame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32382738298-rqt05pdgk7c575d7p5glbq2h415nebvn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcCw29lCgNwVI3rjpqnBeWYLK3AC9WPIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32382738298-rqt05pdgk7c575d7p5glbq2h415nebvn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
