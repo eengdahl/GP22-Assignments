@@ -18,7 +18,7 @@ public class MyDiceHandler : MonoBehaviour
     {
         startposition = GameObject.FindGameObjectWithTag("StartPos").transform.position;
         endposition = GameObject.FindGameObjectWithTag("EndPos").transform.position;
-        direction = (startposition - endposition).normalized;
+        
 
         startdice = 3;
         diceLeft = startdice;
@@ -34,6 +34,8 @@ public class MyDiceHandler : MonoBehaviour
 
     void RollDice(int NrOfDiceRolled)
     {
+        direction = (startposition - endposition).normalized;
+
         for (int i = 0; i < NrOfDiceRolled; i++)
         {
             direction.x++;
