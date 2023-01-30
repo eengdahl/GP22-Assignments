@@ -15,7 +15,8 @@ public class SignInScript : MonoBehaviour
     public TMP_InputField password;
     public TMP_InputField email;
     public TextMeshProUGUI status;
-    // Start is called before the first frame update
+    public Button playButton;
+
     FirebaseAuth auth;
 
     void Start()
@@ -26,18 +27,45 @@ public class SignInScript : MonoBehaviour
                 Debug.LogError(task.Exception);
 
             auth = FirebaseAuth.DefaultInstance;
+
+            if (auth.CurrentUser == null)
+            {
+                AnonymousSignIn();
+            }
         });
     }
 
     public void SignInButton()
     {
-        SignIn(email.text, password.text);
+        SignInFirebase(email.text, password.text);
     }
 
 
-    private void SignIn(string email, string password)
+    private void SignInFirebase(string email, string password)
     {
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+            {
+                Debug.LogWarning(task.Exception);
+                //might be a error, are we connecting with server?
+                //AnonymousSignIn();
+            }
+            else
+            {
+                FirebaseUser newUser = task.Result;
+                Debug.LogFormat("User signed in successfully: {0} ({1})",
+                  newUser.DisplayName, newUser.UserId);
+
+
+                status.text = newUser.Email + "is signed in";
+            }
+        });
+    }
+
+    private void AnonymousSignIn()
+    {
+        auth.SignInAnonymouslyAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
             {
@@ -46,10 +74,7 @@ public class SignInScript : MonoBehaviour
             else
             {
                 FirebaseUser newUser = task.Result;
-                Debug.LogFormat("User signed in successfully: {0} ({1})",
-                  newUser.DisplayName, newUser.UserId);
-
-                status.text = newUser.Email + "is signed in";
+                Debug.LogFormat("UserSugned In successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
             }
         });
     }
@@ -62,6 +87,7 @@ public class SignInScript : MonoBehaviour
     private void RegisterNewUser(string email, string password)
     {
         Debug.Log("Starting Registration");
+        status.text = "Starting Registration";
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
@@ -79,10 +105,6 @@ public class SignInScript : MonoBehaviour
 
     public void DebugLogIn1(int nr)
     {
-
-        //koppla till knapapr för att se vad som har kommit in 
-        //Debugsyfte 
-        //
-        SignIn("test" + nr +"@test.test", "password");
+        SignInFirebase("test" + nr + "@test.test", "password");
     }
 }

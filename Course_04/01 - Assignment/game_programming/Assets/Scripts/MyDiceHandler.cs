@@ -2,28 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
+
+
+[Serializable]
+public class MyRolledDice
+{
+    int playerID;
+    public int[] playerRolls;
+}
+
+
 
 public class MyDiceHandler : MonoBehaviour
 {
     int startdice;
     int diceLeft;
 
-    public Vector3 startposition;
-    public Vector3 endposition;
-    Vector3 direction;
-
+    public GameObject[] startPositions;
+    public GameObject player;
     public GameObject dice;
+
+    MyRolledDice myRolledDice;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        startposition = GameObject.FindGameObjectWithTag("StartPos").transform.position;
-        endposition = GameObject.FindGameObjectWithTag("EndPos").transform.position;
-        
+        player = this.gameObject;
 
         startdice = 3;
         diceLeft = startdice;
         RollDice(diceLeft);
+
+        FireBaseSaver.Instance.AddPlayerToGame(this.gameObject);
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -34,13 +49,14 @@ public class MyDiceHandler : MonoBehaviour
 
     void RollDice(int NrOfDiceRolled)
     {
-        direction = (startposition - endposition).normalized;
 
         for (int i = 0; i < NrOfDiceRolled; i++)
         {
-            direction.x++;
-            Instantiate(dice, direction, Quaternion.identity);
+            Instantiate(dice, startPositions[i].transform.position, Quaternion.identity, player.transform);
 
+            //opens solution
+            dbRef.Child("players").Child(playerID.ToString()).Child("rolls").Child(playerID.ToString()).SetValueAsync(roll);
         }
     }
+
 }

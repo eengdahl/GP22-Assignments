@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd370b2115dc9f4e9f99a3ae545090b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startposition: {x: 0, y: 0, z: 0}
-  endposition: {x: 0, y: 0, z: 0}
+  startPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   dice: {fileID: 6763589330126055592, guid: 53fa3eeed1522ae4ead1ddd2678d4313, type: 3}
