@@ -43,7 +43,6 @@ public class BoardCalculator : MonoBehaviour
     public void CountDiceOnBoard()
     {
         one = diceOnBoard.Count(c => c == 1);
-
         two = diceOnBoard.Count(c => c == 2);
         three = diceOnBoard.Count(c => c == 3);
         four = diceOnBoard.Count(c => c == 4);

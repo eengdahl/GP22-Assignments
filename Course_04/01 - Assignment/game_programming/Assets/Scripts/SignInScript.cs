@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using TMPro;
 using UnityEngine.UI;
@@ -15,9 +16,11 @@ public class SignInScript : MonoBehaviour
     public TMP_InputField password;
     public TMP_InputField email;
     public TextMeshProUGUI status;
-    public Button playButton;
+    public string currentUser ;
 
-    FirebaseAuth auth;
+    public FirebaseAuth auth;
+
+
 
     void Start()
     {
@@ -59,6 +62,8 @@ public class SignInScript : MonoBehaviour
 
 
                 status.text = newUser.Email + "is signed in";
+
+                currentUser = newUser.UserId.ToString();
             }
         });
     }
@@ -75,10 +80,13 @@ public class SignInScript : MonoBehaviour
             {
                 FirebaseUser newUser = task.Result;
                 Debug.LogFormat("UserSugned In successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
+
+                currentUser = newUser.UserId.ToString();
+                Debug.Log(currentUser);
             }
         });
     }
-
+    
     public void RegisterButton()
     {
         RegisterNewUser(email.text, password.text);
@@ -106,5 +114,10 @@ public class SignInScript : MonoBehaviour
     public void DebugLogIn1(int nr)
     {
         SignInFirebase("test" + nr + "@test.test", "password");
+    }
+
+    public void PlayWasPressed()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -21,7 +21,9 @@ public class Dice : MonoBehaviour
 
     public void ShowNewNrRolled(int nrRolled)
     {
-        myNumber = nrRolled;    
+        myNumber = nrRolled;
         myText.text = nrRolled.ToString();
+
+        GetComponentInParent<MyDiceHandler>().CollectDiceRolls(this.myNumber);
     }
 }

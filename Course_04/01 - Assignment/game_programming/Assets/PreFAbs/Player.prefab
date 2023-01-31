@@ -48,4 +48,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  player: {fileID: 0}
   dice: {fileID: 6763589330126055592, guid: 53fa3eeed1522ae4ead1ddd2678d4313, type: 3}
