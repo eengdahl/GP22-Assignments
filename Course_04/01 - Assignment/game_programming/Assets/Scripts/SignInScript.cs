@@ -17,8 +17,10 @@ public class SignInScript : MonoBehaviour
     public TMP_InputField email;
     public TextMeshProUGUI status;
     public string currentUser ;
-
+    
     public FirebaseAuth auth;
+    
+
 
 
 
@@ -118,6 +120,10 @@ public class SignInScript : MonoBehaviour
 
     public void PlayWasPressed()
     {
+        FireBaseSaver.Instance.seed = "1111";
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+
+
     }
 }

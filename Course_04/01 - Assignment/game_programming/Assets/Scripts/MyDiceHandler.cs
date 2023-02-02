@@ -8,8 +8,8 @@ using System;
 [Serializable]
 public class MyRolledDice
 {
-    public int playerID;
     public int[] playerRolls;
+    public int playerID;
 }
 
 
@@ -81,7 +81,7 @@ public class MyDiceHandler : MonoBehaviour
 
 
             string jsonString = JsonUtility.ToJson(myRolledDice);
-            FireBaseSaver.Instance.PlayerToDatabas(signInScript.currentUser, jsonString);
+            FireBaseSaver.Instance.PushData("1111", jsonString);
         }
     }
 

@@ -11,9 +11,13 @@ public class FireBaseSaver : MonoBehaviour
     private static FireBaseSaver _instance;
     public static FireBaseSaver Instance { get { return _instance; } }
 
+    //Function that gets called after load or save
+    public delegate void OnLoadedDelegate(DataSnapshot snapshot);
+    public delegate void OnSaveDelegate();
 
     public List<GameObject> playerActive;
     public int playerCounter;
+    public string seed;
     FirebaseAuth auth;
     FirebaseDatabase db;
 
@@ -30,6 +34,7 @@ public class FireBaseSaver : MonoBehaviour
         }
         playerCounter = 0;
         playerActive = new List<GameObject>();
+
 
 
 
@@ -58,15 +63,52 @@ public class FireBaseSaver : MonoBehaviour
         return playerActive.Count;
     }
 
-    public void PlayerToDatabas(string userID, string data)
-    {
 
-        db.RootReference.Child("games").Child(userID).SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
+    public void LoadData(string path, OnLoadedDelegate onLoadedDelegate)
+    {
+        db.RootReference.Child("games").Child(path).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
                 Debug.LogWarning(task.Exception);
-            else
-                Debug.Log("DataTestWrite: Complete");
+
+            foreach (var item in task.Result.Children)
+            {
+                //Send our result (datasnapshot) to whom asked for it.
+                onLoadedDelegate(item);
+            }
         });
+    }
+
+
+
+    //Save the data at the given path, save callback optional
+    public void SaveData(string path, string data, OnSaveDelegate onSaveDelegate = null)
+    {
+        db.RootReference.Child(path).SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+                Debug.LogWarning(task.Exception);
+
+            //Call our delegate if it's not null
+            onSaveDelegate?.Invoke();
+        });
+    }
+
+    //Save the data at the given path, save callback optional
+    public void PushData(string path, string data, OnSaveDelegate onSaveDelegate = null)
+    {
+        db.RootReference.Child("games").Child(path).Push().SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+                Debug.LogWarning(task.Exception);
+
+            //Call our delegate if it's not null
+            onSaveDelegate?.Invoke();
+        });
+    }
+
+    public void RemoveData(string path)
+    {
+        db.RootReference.Child(path).RemoveValueAsync();
     }
 }
