@@ -16,6 +16,7 @@ public class FireBaseSaver : MonoBehaviour
     public delegate void OnSaveDelegate();
 
     public List<GameObject> playerActive;
+    public List<string> playersActive;
     public int playerCounter;
     public string seed;
     FirebaseAuth auth;
@@ -35,6 +36,8 @@ public class FireBaseSaver : MonoBehaviour
         playerCounter = 0;
         playerActive = new List<GameObject>();
 
+        playersActive = new List<string>();
+
 
 
 
@@ -51,16 +54,17 @@ public class FireBaseSaver : MonoBehaviour
 
     }
 
-    public int AddPlayerToGame(GameObject player)
+    public int AddPlayerToGame(string player)
     {
-        playerActive.Add(player);
+
+        playersActive.Add(player);
         playerCounter = playerActive.Count;
         return playerCounter;
     }
 
-    public int GetActivePlayers()
+    public string GetActivePlayerName()
     {
-        return playerActive.Count;
+        return playersActive[0];
     }
 
 
@@ -84,7 +88,7 @@ public class FireBaseSaver : MonoBehaviour
     //Save the data at the given path, save callback optional
     public void SaveData(string path, string data, OnSaveDelegate onSaveDelegate = null)
     {
-        db.RootReference.Child(path).SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
+        db.RootReference.Child("games").Child(path).SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
                 Debug.LogWarning(task.Exception);

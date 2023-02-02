@@ -16,55 +16,26 @@ using UnityEngine.Rendering;
 public class NewGameCalculator : MonoBehaviour
 {
     public List<int> diceOnBoard;
+    List<string> activePlayers;
     public int one, two, three, four, five, six;
 
     MyRolledDice myRolledDice;
     DataSnapshot snapshot;
     int buffer = 0;
+    int returner;
 
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        //Invoke("LoadDataFromFB", 2);
-    }
+ 
     void Start()
     {
-
         FireBaseSaver.Instance.LoadData("1111", LoadState);
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    //public void LoadDataFromFB()
-    //{
-    //    var db = FirebaseDatabase.DefaultInstance;
-
-    //    db.RootReference.Child("games").Child(FireBaseSaver.Instance.seed).GetValueAsync().ContinueWithOnMainThread(task =>
-    //    {
-    //        if (task.Exception != null)
-    //        {
-    //            Debug.LogError(task.Exception);
-    //        }
-
-    //        //here we get the result from our database.
-    //        DataSnapshot snap = task.Result;
-
-    //        //And send the json data to a function that can update our game.
-    //        LoadState(snap.GetRawJsonValue());
-    //    });
-    //}
-
-
-
+   
     public void LoadState(DataSnapshot test)
     {
         var playerInfo = JsonUtility.FromJson<MyRolledDice>(test.GetRawJsonValue());
         diceOnBoard.AddRange(playerInfo.playerRolls);
+        activePlayers.Add(playerInfo.playerID);
 
         for (int i = 0; i < playerInfo.playerRolls.Length; i++)
         {
@@ -76,7 +47,6 @@ public class NewGameCalculator : MonoBehaviour
     }
 
 
-
     public void CountDiceOnBoard()
     {
         one = diceOnBoard.Count(c => c == 1);
@@ -86,4 +56,35 @@ public class NewGameCalculator : MonoBehaviour
         five = diceOnBoard.Count(c => c == 5);
         six = diceOnBoard.Count(c => c == 6);
     }
+
+
+    //public void PickPlayerOrder()
+    //{
+    //   FireBaseSaver.Instance.SaveData()
+    //}
+
+
+    public int ReturnDiceOnBoard(int HowManyOnBoard)
+    {
+        returner = 0;
+
+        for (int i = 0; i < diceOnBoard.Count; i++)
+        {
+            if (diceOnBoard[i] == HowManyOnBoard || diceOnBoard[i] == 1)
+            {
+                returner++;
+            }
+        }
+        Debug.Log("returner" + returner);
+        return returner;
+
+    }
+
+
+    public void PlayerTurnProvider()
+    {
+
+    }
+
+
 }

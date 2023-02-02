@@ -9,7 +9,7 @@ using System;
 public class MyRolledDice
 {
     public int[] playerRolls;
-    public int playerID;
+    public string playerID;
 }
 
 
@@ -22,6 +22,7 @@ public class MyDiceHandler : MonoBehaviour
     int i;
 
     int myPlayerIndex;
+    public string playerName;
 
     public GameObject[] startPositions;
     public GameObject player;
@@ -33,6 +34,7 @@ public class MyDiceHandler : MonoBehaviour
 
     private void Awake()
     {
+        playerName = FireBaseSaver.Instance.GetActivePlayerName();
         i = 0;
         player = this.gameObject;
         startdice = 3;
@@ -43,7 +45,7 @@ public class MyDiceHandler : MonoBehaviour
     {
         signInScript = FindObjectOfType<SignInScript>();
         RollDice(diceLeft);
-        myPlayerIndex = FireBaseSaver.Instance.AddPlayerToGame(this.gameObject);
+       // myPlayerIndex = FireBaseSaver.Instance.AddPlayerToGame(this.gameObject);
 
     }
 
@@ -70,7 +72,7 @@ public class MyDiceHandler : MonoBehaviour
         {
             MyRolledDice myRolledDice = new MyRolledDice();
             myRolledDice.playerRolls = new int[diceLeft];
-            myRolledDice.playerID = myPlayerIndex;
+            myRolledDice.playerID = playerName;
 
 
             for (int i = 0; i < buffer.Length; i++)

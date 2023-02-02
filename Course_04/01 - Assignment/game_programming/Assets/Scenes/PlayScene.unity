@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.35
+  m_fontSize: 70.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -507,7 +507,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 355609119}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286213550}
+        m_TargetAssemblyTypeName: BetCalculator, Assembly-CSharp
+        m_MethodName: CallBS
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &355609119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +756,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 602920841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286213550}
+        m_TargetAssemblyTypeName: BetCalculator, Assembly-CSharp
+        m_MethodName: UpDigit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &602920841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,7 +998,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.35
+  m_fontSize: 70.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1242,7 +1266,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 933150121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286213550}
+        m_TargetAssemblyTypeName: BetCalculator, Assembly-CSharp
+        m_MethodName: UpNR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &933150121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,6 +1493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286213547}
   - component: {fileID: 1286213549}
+  - component: {fileID: 1286213550}
   m_Layer: 0
   m_Name: Gameprocesses
   m_TagString: Untagged
@@ -1498,6 +1535,24 @@ MonoBehaviour:
   four: 0
   five: 0
   six: 0
+--- !u!114 &1286213550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286213546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731ac836edecb424794f05f78276a5be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastBetNr: 0
+  lastBetDigit: 0
+  currentBetNr: 0
+  currentBetDigit: 0
+  aboutToSubmit: {fileID: 1267079261}
+  lastBet: {fileID: 348518439}
 --- !u!1 &1409219021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1727,7 +1782,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.35
+  m_fontSize: 70.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1931,7 +1986,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.35
+  m_fontSize: 70.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2064,7 +2119,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1723768393}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286213550}
+        m_TargetAssemblyTypeName: BetCalculator, Assembly-CSharp
+        m_MethodName: DownDigit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1723768393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2293,7 +2360,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1807078360}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286213550}
+        m_TargetAssemblyTypeName: BetCalculator, Assembly-CSharp
+        m_MethodName: SubmitBet
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1807078360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,7 +2494,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2006905538}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286213550}
+        m_TargetAssemblyTypeName: BetCalculator, Assembly-CSharp
+        m_MethodName: DownNR
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2006905538
 MonoBehaviour:
   m_ObjectHideFlags: 0

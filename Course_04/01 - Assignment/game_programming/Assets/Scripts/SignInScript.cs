@@ -66,6 +66,7 @@ public class SignInScript : MonoBehaviour
                 status.text = newUser.Email + "is signed in";
 
                 currentUser = newUser.UserId.ToString();
+                FireBaseSaver.Instance.AddPlayerToGame(currentUser);
             }
         });
     }

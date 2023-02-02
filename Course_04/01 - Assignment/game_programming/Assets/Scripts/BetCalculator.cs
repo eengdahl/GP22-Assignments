@@ -15,7 +15,7 @@ public class BetCalculator : MonoBehaviour
     public int currentBetDigit;
     public TextMeshProUGUI aboutToSubmit;
     public TextMeshProUGUI lastBet;
-    public BoardCalculator boardCalculator;
+
     // BetCalculator betCalculator;
 
 
@@ -68,7 +68,7 @@ public class BetCalculator : MonoBehaviour
         aboutToSubmit.text = currentBetNr.ToString() + " " + currentBetDigit.ToString() + "´s";
 
     }
-    public void Submit()
+    public void SubmitBet()
     {
         CheckIfInvalidBet(currentBetNr, currentBetDigit);
     }
@@ -100,18 +100,18 @@ public class BetCalculator : MonoBehaviour
     }
 
 
-    public void CallBet()
+    public void CallBS()
     {
-        int amountOnBoard = boardCalculator.ReturnDiceOnBoard(lastBetDigit);
+        //int amountOnBoard = boardCalculator.ReturnDiceOnBoard(lastBetDigit);
 
-        if (amountOnBoard >= lastBetNr)
-        {
-            Debug.Log("you lose");
-        }
-        if (amountOnBoard < lastBetNr)
-        {
-            Debug.Log("you win");
-        }
+        //if (amountOnBoard >= lastBetNr)
+        //{
+        //    Debug.Log("you lose");
+        //}
+        //if (amountOnBoard < lastBetNr)
+        //{
+        //    Debug.Log("you win");
+        //}
 
     }
 
