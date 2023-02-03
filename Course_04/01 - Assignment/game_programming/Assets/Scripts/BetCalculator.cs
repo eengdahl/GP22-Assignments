@@ -122,6 +122,9 @@ public class BetCalculator : MonoBehaviour
                 newGameCalculator.playerTurn++;
             }
 
+            //Playerturn synkar lokalt och sen på servern.
+            //Det hinner laddas lokalt innan server-side och fuckar ordningen på playerTurn
+            //TODO: gå aldrig till 0 utan dela playerorder på listan. 
 
             GameStats gameStats = new GameStats();
             gameStats.playerTurn = newGameCalculator.playerTurn;

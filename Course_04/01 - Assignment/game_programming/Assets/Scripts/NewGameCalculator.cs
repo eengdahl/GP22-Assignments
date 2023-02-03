@@ -92,7 +92,6 @@ public class NewGameCalculator : MonoBehaviour
 
     }
 
-
     public void PlayerFirstTurnProvider(DataSnapshot test)
     {
         var playerTurnInfo = JsonUtility.FromJson<GameStats>(test.GetRawJsonValue());
