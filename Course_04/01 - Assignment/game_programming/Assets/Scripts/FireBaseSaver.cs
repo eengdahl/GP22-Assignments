@@ -52,6 +52,7 @@ public class FireBaseSaver : MonoBehaviour
             db = FirebaseDatabase.DefaultInstance;
         });
 
+
     }
 
     public int AddPlayerToGame(string player)
@@ -80,6 +81,19 @@ public class FireBaseSaver : MonoBehaviour
                 //Send our result (datasnapshot) to whom asked for it.
                 onLoadedDelegate(item);
             }
+        });
+    }
+
+    //loads the data at "path" then returns json result to the delegate/callback function
+    public void LoadSingelData(string path, OnLoadedDelegate onLoadedDelegate)
+    {
+        db.RootReference.Child("games").Child(path).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+                Debug.LogWarning(task.Exception);
+
+            //Send our result (datasnapshot) to whom asked for it.
+            onLoadedDelegate(task.Result);
         });
     }
 
@@ -115,4 +129,6 @@ public class FireBaseSaver : MonoBehaviour
     {
         db.RootReference.Child(path).RemoveValueAsync();
     }
+
+
 }

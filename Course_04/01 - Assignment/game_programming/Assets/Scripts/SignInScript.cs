@@ -121,6 +121,8 @@ public class SignInScript : MonoBehaviour
 
     public void PlayWasPressed()
     {
+
+
         FireBaseSaver.Instance.seed = "1111";
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         

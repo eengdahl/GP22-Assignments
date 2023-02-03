@@ -23,6 +23,7 @@ public class MyDiceHandler : MonoBehaviour
 
     int myPlayerIndex;
     public string playerName;
+    public bool itIsMyTurn;
 
     public GameObject[] startPositions;
     public GameObject player;
@@ -30,11 +31,13 @@ public class MyDiceHandler : MonoBehaviour
 
     MyRolledDice myRolledDice;
     SignInScript signInScript;
+    public NewGameCalculator gameCalculator;
 
 
     private void Awake()
     {
         playerName = FireBaseSaver.Instance.GetActivePlayerName();
+
         i = 0;
         player = this.gameObject;
         startdice = 3;
@@ -43,10 +46,11 @@ public class MyDiceHandler : MonoBehaviour
 
     void Start()
     {
+        Invoke("IsItMyTurn", 2);
         signInScript = FindObjectOfType<SignInScript>();
         RollDice(diceLeft);
-       // myPlayerIndex = FireBaseSaver.Instance.AddPlayerToGame(this.gameObject);
-
+        // myPlayerIndex = FireBaseSaver.Instance.AddPlayerToGame(this.gameObject);
+        //FireBaseSaver.Instance.Subscribe("1111", "gameStats");
     }
 
 
@@ -83,8 +87,23 @@ public class MyDiceHandler : MonoBehaviour
 
 
             string jsonString = JsonUtility.ToJson(myRolledDice);
-            FireBaseSaver.Instance.PushData("1111", jsonString);
+            FireBaseSaver.Instance.PushData("1111/players", jsonString);
         }
+    }
+
+    public void IsItMyTurn()
+    {
+        FireBaseSaver.Instance.LoadSingelData("1111/gameStats", gameCalculator.PlayerFirstTurnProvider);
+        if (gameCalculator.activePlayers[gameCalculator.playerTurn] == playerName)
+        {
+            itIsMyTurn = true;
+
+        }
+        else
+        {
+            itIsMyTurn= false;
+        }
+        Invoke("IsItMyTurn", 2);
     }
 
 }

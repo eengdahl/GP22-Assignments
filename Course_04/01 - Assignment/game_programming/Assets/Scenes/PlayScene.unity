@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.3
+  m_fontSize: 70.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.25
+  m_fontSize: 70.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1529,6 +1529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceOnBoard: 
+  activePlayers: []
   one: 0
   two: 0
   three: 0
@@ -1782,7 +1783,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.3
+  m_fontSize: 70.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1888,6 +1889,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5367565491645117869, guid: c1835b117dce48c4a8246e48e4d626c1, type: 3}
+      propertyPath: gameCalculator
+      value: 
+      objectReference: {fileID: 1286213549}
+    - target: {fileID: 5367565491645117869, guid: c1835b117dce48c4a8246e48e4d626c1, type: 3}
       propertyPath: startPositions.Array.data[0]
       value: 
       objectReference: {fileID: 225107842}
@@ -1986,7 +1991,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.3
+  m_fontSize: 70.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

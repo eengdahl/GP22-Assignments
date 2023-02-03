@@ -16,17 +16,35 @@ public class BetCalculator : MonoBehaviour
     public TextMeshProUGUI aboutToSubmit;
     public TextMeshProUGUI lastBet;
 
-    // BetCalculator betCalculator;
+    MyDiceHandler mDiceHandler;
+    NewGameCalculator newGameCalculator;
 
 
 
 
     private void Start()
     {
-        lastBetNr = 0;
-        lastBetDigit = 0;
+
         currentBetDigit = 2;
         currentBetNr = 1;
+        mDiceHandler = FindObjectOfType<MyDiceHandler>();
+        newGameCalculator = FindObjectOfType<NewGameCalculator>();
+    }
+    private void Update()
+    {
+        lastBet.text = lastBetNr.ToString() + " " + lastBetDigit.ToString() + "´s";
+    }
+
+
+
+    public void ActivateAllButtons()
+    {
+
+    }
+
+    public void DeactivateAllButtons()
+    {
+
     }
 
 
@@ -70,6 +88,10 @@ public class BetCalculator : MonoBehaviour
     }
     public void SubmitBet()
     {
+        if (mDiceHandler.itIsMyTurn == false)
+        {
+            return;
+        }
         CheckIfInvalidBet(currentBetNr, currentBetDigit);
     }
 
@@ -90,7 +112,28 @@ public class BetCalculator : MonoBehaviour
         else
         {
             aboutToSubmit.text = "";
-            lastBet.text = currentBetNr.ToString() + " " + currentBetDigit.ToString() + "´s";
+
+            if (newGameCalculator.playerTurn > newGameCalculator.activePlayers.Count)
+            {
+                newGameCalculator.playerTurn = 0;
+            }
+            else
+            {
+                newGameCalculator.playerTurn++;
+            }
+
+
+            GameStats gameStats = new GameStats();
+            gameStats.playerTurn = newGameCalculator.playerTurn;
+            gameStats.currentBetDigit = currentBetDigit;
+            gameStats.currentBetNr = currentBetNr;
+
+            string jsonString = JsonUtility.ToJson(gameStats);
+
+            Debug.Log("pushing");
+            FireBaseSaver.Instance.SaveData("1111/gameStats", jsonString);
+
+
             currentBetNr = 1;
             currentBetDigit = 1;
             lastBetDigit = digit;
@@ -102,6 +145,10 @@ public class BetCalculator : MonoBehaviour
 
     public void CallBS()
     {
+        if (mDiceHandler.itIsMyTurn == false)
+        {
+            return;
+        }
         //int amountOnBoard = boardCalculator.ReturnDiceOnBoard(lastBetDigit);
 
         //if (amountOnBoard >= lastBetNr)
