@@ -97,6 +97,10 @@ public class NewGameCalculator : MonoBehaviour
         var playerTurnInfo = JsonUtility.FromJson<GameStats>(test.GetRawJsonValue());
         
         playerTurn = playerTurnInfo.playerTurn;
+        if (playerTurn>activePlayers.Count)
+        {
+         //   playerTurn
+        }
         betCalculator.lastBetDigit = playerTurnInfo.currentBetDigit;
         betCalculator.lastBetNr = playerTurnInfo.currentBetNr;
         Debug.Log(playerTurn);
