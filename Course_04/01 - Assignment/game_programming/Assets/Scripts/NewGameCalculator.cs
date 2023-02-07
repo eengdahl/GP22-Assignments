@@ -112,14 +112,12 @@ public class NewGameCalculator : MonoBehaviour
         betCalculator.lastBetDigit = playerTurnInfo.currentBetDigit;
         betCalculator.lastBetNr = playerTurnInfo.currentBetNr;
 
-        if (playerTurn > activePlayers.Count + 1)
+        playerTurn = playerTurnInfo.playerTurn;
+        if (playerTurn >= activePlayers.Count)
         {
-            playerTurn = playerTurnInfo.playerTurn - activePlayers.Count;
+            playerTurn = 0;
         }
-        else
-        {
-            playerTurn = playerTurnInfo.playerTurn;
-        }
+
 
         Debug.Log(playerTurn);
         if (activePlayers[playerTurn] == diceHandler.playerName)

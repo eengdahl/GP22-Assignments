@@ -130,5 +130,4 @@ public class FireBaseSaver : MonoBehaviour
         db.RootReference.Child(path).RemoveValueAsync();
     }
 
-
 }

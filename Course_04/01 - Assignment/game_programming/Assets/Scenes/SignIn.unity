@@ -2588,6 +2588,7 @@ MonoBehaviour:
   email: {fileID: 2124106688}
   status: {fileID: 5736549}
   currentUser: 
+  play: {fileID: 218466582}
 --- !u!4 &1665785659
 Transform:
   m_ObjectHideFlags: 0
@@ -2616,7 +2617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerActive: []
+  playersActive: []
   playerCounter: 0
+  seed: 
 --- !u!1 &1796473444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   me: {fileID: 0}
+  seed: 1111
 --- !u!1 &1850601964
 GameObject:
   m_ObjectHideFlags: 0

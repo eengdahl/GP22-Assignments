@@ -19,6 +19,7 @@ public class SignInScript : MonoBehaviour
     public string currentUser ;
     
     public FirebaseAuth auth;
+    public GameObject play;
     
 
 
@@ -26,6 +27,8 @@ public class SignInScript : MonoBehaviour
 
     void Start()
     {
+        play.SetActive(false);
+
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
@@ -62,11 +65,12 @@ public class SignInScript : MonoBehaviour
                 Debug.LogFormat("User signed in successfully: {0} ({1})",
                   newUser.DisplayName, newUser.UserId);
 
-
+                play.SetActive(true);
                 status.text = newUser.Email + "is signed in";
 
                 //Testing Emil
-                currentUser = newUser.UserId.ToString();
+                
+                currentUser = newUser.Email;
                 FireBaseSaver.Instance.AddPlayerToGame(currentUser);
             }
         });
@@ -85,7 +89,10 @@ public class SignInScript : MonoBehaviour
                 FirebaseUser newUser = task.Result;
                 Debug.LogFormat("UserSugned In successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
 
+                play.SetActive(true);
+
                 currentUser = newUser.UserId.ToString();
+                FireBaseSaver.Instance.AddPlayerToGame(currentUser);
                 Debug.Log(currentUser);
             }
         });
