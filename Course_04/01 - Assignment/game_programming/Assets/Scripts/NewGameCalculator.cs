@@ -31,6 +31,7 @@ public class NewGameCalculator : MonoBehaviour
     MyRolledDice myRolledDice;
     DataSnapshot snapshot;
     BetCalculator betCalculator;
+    public MyDiceHandler diceHandler;
     int buffer = 0;
     int returner;
     public int playerTurn;
@@ -42,7 +43,7 @@ public class NewGameCalculator : MonoBehaviour
         FireBaseSaver.Instance.LoadData("1111/players", LoadState);
 
         betCalculator = FindObjectOfType<BetCalculator>();
-      
+        //PushFirstGameRules();
     }
 
 
@@ -50,7 +51,8 @@ public class NewGameCalculator : MonoBehaviour
     {
         var playerInfo = JsonUtility.FromJson<MyRolledDice>(test.GetRawJsonValue());
         diceOnBoard.AddRange(playerInfo.playerRolls);
-        activePlayers.Add(playerInfo.playerID);
+
+
 
         for (int i = 0; i < playerInfo.playerRolls.Length; i++)
         {
@@ -59,6 +61,11 @@ public class NewGameCalculator : MonoBehaviour
             buffer++;
         }
         CountDiceOnBoard();
+        if (!activePlayers.Contains(playerInfo.playerID.ToString()))
+        {
+            activePlayers.Add(playerInfo.playerID);
+            Debug.Log("adding Player");
+        }
     }
 
 
@@ -95,18 +102,47 @@ public class NewGameCalculator : MonoBehaviour
     public void PlayerFirstTurnProvider(DataSnapshot test)
     {
         var playerTurnInfo = JsonUtility.FromJson<GameStats>(test.GetRawJsonValue());
-        
-        playerTurn = playerTurnInfo.playerTurn;
-        if (playerTurn>activePlayers.Count)
+
+        if (playerTurnInfo == null)
         {
-         //   playerTurn
+            PushFirstGameRules();
+            Debug.Log("pushing First");
         }
+
         betCalculator.lastBetDigit = playerTurnInfo.currentBetDigit;
         betCalculator.lastBetNr = playerTurnInfo.currentBetNr;
+
+        if (playerTurn > activePlayers.Count + 1)
+        {
+            playerTurn = playerTurnInfo.playerTurn - activePlayers.Count;
+        }
+        else
+        {
+            playerTurn = playerTurnInfo.playerTurn;
+        }
+
         Debug.Log(playerTurn);
+        if (activePlayers[playerTurn] == diceHandler.playerName)
+        {
+            diceHandler.itIsMyTurn = true;
+        }
+        else
+        {
+            diceHandler.itIsMyTurn = false;
+        }
     }
 
- 
 
+    private void PushFirstGameRules()
+    {
+        GameStats gameStats = new GameStats();
+        gameStats.playerTurn = 0;
+        gameStats.currentBetDigit = 0;
+        gameStats.currentBetNr = 0;
+
+        string jsonString = JsonUtility.ToJson(gameStats);
+
+        FireBaseSaver.Instance.SaveData("1111/gameStats", jsonString);
+    }
 
 }

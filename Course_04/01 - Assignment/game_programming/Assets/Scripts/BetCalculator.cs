@@ -37,15 +37,7 @@ public class BetCalculator : MonoBehaviour
 
 
 
-    public void ActivateAllButtons()
-    {
 
-    }
-
-    public void DeactivateAllButtons()
-    {
-
-    }
 
 
     void InvalidBet()

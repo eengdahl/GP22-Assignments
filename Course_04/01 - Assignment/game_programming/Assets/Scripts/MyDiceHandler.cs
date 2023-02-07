@@ -31,6 +31,7 @@ public class MyDiceHandler : MonoBehaviour
 
     MyRolledDice myRolledDice;
     SignInScript signInScript;
+    public BetCalculator betCalc;
     public NewGameCalculator gameCalculator;
 
 
@@ -87,6 +88,8 @@ public class MyDiceHandler : MonoBehaviour
 
 
             string jsonString = JsonUtility.ToJson(myRolledDice);
+
+
             FireBaseSaver.Instance.PushData("1111/players", jsonString);
         }
     }
@@ -94,14 +97,13 @@ public class MyDiceHandler : MonoBehaviour
     public void IsItMyTurn()
     {
         FireBaseSaver.Instance.LoadSingelData("1111/gameStats", gameCalculator.PlayerFirstTurnProvider);
-        if (gameCalculator.activePlayers[gameCalculator.playerTurn] == playerName)
+        if (itIsMyTurn)
         {
-            itIsMyTurn = true;
-
+            betCalc.aboutToSubmit.enabled = true;
         }
         else
         {
-            itIsMyTurn= false;
+            betCalc.aboutToSubmit.enabled = false;
         }
         Invoke("IsItMyTurn", 2);
     }
