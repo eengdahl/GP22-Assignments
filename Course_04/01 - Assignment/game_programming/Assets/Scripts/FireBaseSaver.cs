@@ -12,7 +12,7 @@ public class FireBaseSaver : MonoBehaviour
     public static FireBaseSaver Instance { get { return _instance; } }
 
     //Function that gets called after load or save
-    public delegate void OnLoadedDelegate(DataSnapshot snapshot);
+    public delegate void OnLoadedDelegate(DataSnapshot snapshot, long numberOfChildren = 0);
     public delegate void OnSaveDelegate();
 
     public List<GameObject> playerActive;
@@ -79,10 +79,11 @@ public class FireBaseSaver : MonoBehaviour
             foreach (var item in task.Result.Children)
             {
                 //Send our result (datasnapshot) to whom asked for it.
-                onLoadedDelegate(item);
+                onLoadedDelegate(item, task.Result.ChildrenCount);
             }
         });
     }
+
 
     //loads the data at "path" then returns json result to the delegate/callback function
     public void LoadSingelData(string path, OnLoadedDelegate onLoadedDelegate)

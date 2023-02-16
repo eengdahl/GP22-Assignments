@@ -70,7 +70,7 @@ public class SignInScript : MonoBehaviour
 
                 //Testing Emil
                 
-                currentUser = newUser.Email;
+                currentUser = newUser.Email.ToString();
                 FireBaseSaver.Instance.AddPlayerToGame(currentUser);
             }
         });
@@ -90,8 +90,8 @@ public class SignInScript : MonoBehaviour
                 Debug.LogFormat("UserSugned In successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
 
                 play.SetActive(true);
-
-                currentUser = newUser.UserId.ToString();
+                //Main UserID
+                currentUser = newUser.DisplayName.ToString();
                 FireBaseSaver.Instance.AddPlayerToGame(currentUser);
                 Debug.Log(currentUser);
             }

@@ -16,14 +16,15 @@ public class MyRolledDice
 
 public class MyDiceHandler : MonoBehaviour
 {
-    int startdice;
-    int diceLeft;
+    public int startdice;
+    public int diceLeft;
     int[] buffer;
     int i;
 
     int myPlayerIndex;
     public string playerName;
     public bool itIsMyTurn;
+    public bool IHaveRolled = false;
 
     public GameObject[] startPositions;
     public GameObject player;
@@ -48,15 +49,26 @@ public class MyDiceHandler : MonoBehaviour
     void Start()
     {
         Invoke("IsItMyTurn", 2);
+       // Invoke("DelayRollDice", 4);
         signInScript = FindObjectOfType<SignInScript>();
-        RollDice(diceLeft);
+
+
         // myPlayerIndex = FireBaseSaver.Instance.AddPlayerToGame(this.gameObject);
         //FireBaseSaver.Instance.Subscribe("1111", "gameStats");
     }
-
-
-    void RollDice(int NrOfDiceRolled)
+     void DelayRollDice()
     {
+        RollDice(diceLeft);
+    }
+
+
+    public void RollDice(int NrOfDiceRolled)
+    {
+        if (IHaveRolled)
+        {
+            Debug.Log("IHaveRolled");
+            return;
+        }
         for (int i = 0; i < NrOfDiceRolled; i++)
         {
             Instantiate(dice, startPositions[i].transform.position, Quaternion.identity, player.transform);
@@ -80,9 +92,12 @@ public class MyDiceHandler : MonoBehaviour
             myRolledDice.playerID = playerName;
 
 
+               // gameCalculator.diceOnBoard.AddRange(buffer);
             for (int i = 0; i < buffer.Length; i++)
             {
                 myRolledDice.playerRolls[i] = buffer[i];
+              //  gameCalculator.diceOnBoard[i] = buffer[i];
+
             }
             i = 0;
 

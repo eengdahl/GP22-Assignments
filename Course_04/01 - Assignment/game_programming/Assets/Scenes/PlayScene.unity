@@ -208,7 +208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 70.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -998,7 +998,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 70.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1494,6 +1494,7 @@ GameObject:
   - component: {fileID: 1286213547}
   - component: {fileID: 1286213549}
   - component: {fileID: 1286213550}
+  - component: {fileID: 1286213551}
   m_Layer: 0
   m_Name: Gameprocesses
   m_TagString: Untagged
@@ -1536,8 +1537,13 @@ MonoBehaviour:
   four: 0
   five: 0
   six: 0
+  myRolledDice:
+    playerRolls: 
+    playerID: 
   diceHandler: {fileID: 1643264803}
   playerTurn: 0
+  gameStates: 0
+  dice: {fileID: 6763589330126055592, guid: 53fa3eeed1522ae4ead1ddd2678d4313, type: 3}
 --- !u!114 &1286213550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,6 +1562,21 @@ MonoBehaviour:
   currentBetDigit: 0
   aboutToSubmit: {fileID: 1267079261}
   lastBet: {fileID: 348518439}
+--- !u!114 &1286213551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286213546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed95c275facc924da5676bdf1fd0673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameCalc: {fileID: 1286213549}
+  myDiceHandler: {fileID: 1643264803}
+  iHaveRolled: 0
 --- !u!1 &1409219021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1806,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 70.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2008,7 +2029,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.7
+  m_fontSize: 70.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
