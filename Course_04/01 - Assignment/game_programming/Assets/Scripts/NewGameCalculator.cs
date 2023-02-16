@@ -112,13 +112,15 @@ public class NewGameCalculator : MonoBehaviour
     {
         Debug.Log(playersInList);
         Debug.Log(total);
+        Debug.Log("tttt");
+
 
         var loadActivePlayers = JsonUtility.FromJson<MyRolledDice>(playersInList.GetRawJsonValue());
-        totalPlayers = total;
-        if (playersInList == null)
+        if (playersInList == null || total == 999)
         {
             GameStateScript.Instance.ChangeGameState(GameStates.RollDice);
         }
+        totalPlayers = total;
         if (totalPlayers == 0)
         {
             Debug.Log(total);
@@ -177,11 +179,11 @@ public class NewGameCalculator : MonoBehaviour
     {
         var playerTurnInfo = JsonUtility.FromJson<GameStats>(test.GetRawJsonValue());
 
-        //if (playerTurnInfo == null)
-        //{
-        //    PushFirstGameRules();
-        //    Debug.Log("pushing First");
-        //}
+        if (playerTurnInfo == null)
+        {
+            PushFirstGameRules();
+            Debug.Log("pushing first");
+        }
         betCalculator.lastBetDigit = playerTurnInfo.currentBetDigit;
         betCalculator.lastBetNr = playerTurnInfo.currentBetNr;
 
@@ -191,8 +193,6 @@ public class NewGameCalculator : MonoBehaviour
             playerTurn = 0;
         }
 
-
-        Debug.Log("playerTurn" + playerTurn);
 
         if (activePlayers[playerTurn] == diceHandler.playerName)
         {

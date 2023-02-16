@@ -43,7 +43,6 @@ public class GameStateScript : MonoBehaviour
 
     public void ChangeGameState(GameStates newGameState)
     {
-            Debug.Log("called");
         switch (newGameState)
         {
             case GameStates.IsGameActive:
@@ -57,16 +56,17 @@ public class GameStateScript : MonoBehaviour
                 break;
 
             case GameStates.HaveIContributed:
-                Debug.Log("HaveIContributed");
                 if (hasChecked)
                 {
+                Debug.Log("HaveIContributed");
                 //HERE
                 //Am i in playerList. 
                 //Add me to playerList if empty? 
                 //Players do not exist in the list yet. Roll or add ? 
               
                     FireBaseSaver.Instance.LoadData("1111/players", gameCalc.IsMyRollUploaded);
-                    hasChecked = false;
+                    FireBaseSaver.Instance.LoadSingelData("1111/players", gameCalc.IsMyRollUploaded);
+                   hasChecked = false;
                 }
                 //if (IHaveRolled)
                 //{

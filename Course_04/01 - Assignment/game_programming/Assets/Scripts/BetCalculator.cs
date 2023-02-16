@@ -24,7 +24,6 @@ public class BetCalculator : MonoBehaviour
 
     private void Start()
     {
-
         currentBetDigit = 2;
         currentBetNr = 1;
         mDiceHandler = FindObjectOfType<MyDiceHandler>();

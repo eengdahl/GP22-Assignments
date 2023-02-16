@@ -5,6 +5,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Extensions;
+using static UnityEditor.Progress;
 
 public class FireBaseSaver : MonoBehaviour
 {
@@ -74,12 +75,19 @@ public class FireBaseSaver : MonoBehaviour
         db.RootReference.Child("games").Child(path).GetValueAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Exception != null)
+            
                 Debug.LogWarning(task.Exception);
-
+            
             foreach (var item in task.Result.Children)
             {
+                if (item == null)
+                {
+                    onLoadedDelegate(task.Result, 999);
+                }
                 //Send our result (datasnapshot) to whom asked for it.
                 onLoadedDelegate(item, task.Result.ChildrenCount);
+
+
             }
         });
     }
