@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "176282044200",
+    "firebase_url": "https://fir-996e0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "fir-996e0",
+    "storage_bucket": "fir-996e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176282044200:android:0543de56332599f35ab21d",
+        "android_client_info": {
+          "package_name": "com.Yrgo.FireBase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176282044200-792n7k4s9175osp386malfh4rhfb9vgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXcOCkx0C3_9DjE9w3WRWq262w18rhwWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176282044200-792n7k4s9175osp386malfh4rhfb9vgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
