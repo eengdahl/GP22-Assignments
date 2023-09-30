@@ -8,7 +8,7 @@ public class pointListener : MonoBehaviour
 {
 
     public TMP_Text scoreText;
-    int points;
+    public int points;
 
 
     // Start is called before the first frame update

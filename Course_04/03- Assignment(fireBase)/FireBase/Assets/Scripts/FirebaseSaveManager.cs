@@ -15,6 +15,8 @@ public class FirebaseSaveManager : MonoBehaviour
     // public delegate void OnLoadedDelegate<T>(List<T> dataList);
     public delegate void OnSaveDelegate();
 
+
+
     FirebaseDatabase db;
 
     private void Awake()

@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     float speed = 5f;
     Rigidbody2D rb;
     public int score;
+    public GameObject spawnTrace;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,37 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount>0)
-        {
-            theTouch = Input.GetTouch(0);
-            if (theTouch.phase ==TouchPhase.Began)
-            {
-                touchStartPos = theTouch.position;
-            }
 
-        }
-        else if (theTouch.phase==TouchPhase.Moved|| theTouch.phase==TouchPhase.Ended)
-        {
-            touchEndPos = theTouch.position;
-            float x =touchEndPos.x-touchStartPos.x;
-            float y =touchEndPos.y-touchStartPos.y;
 
-            if (Mathf.Abs(x) == 0&& Mathf.Abs(y) == 0)
-            {
-                dir = "Tapped";
-            }
-            else if(Mathf.Abs(x)>Mathf.Abs(y))
-            {
-                dir = x > 0 ? "Up" : "Down";
-            }
-            //Set player x pos 
-            
-        }
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
         if (Input.GetKey(KeyCode.A))
         {
             playerPosition.x -= speed * Time.deltaTime;
@@ -68,8 +40,22 @@ public class PlayerMovement : MonoBehaviour
         {
             playerPosition.x += speed * Time.deltaTime;
         }
+        if (Input.GetKey(KeyCode.W))
+        {
+            playerPosition.y += speed / 2 * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            playerPosition.y -= speed / 2 * Time.deltaTime;
+        }
 
         rb.transform.position = playerPosition;
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Instantiate(spawnTrace, transform.position, transform.rotation);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -83,3 +69,29 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+//if (Input.touchCount > 0)
+//{
+//    theTouch = Input.GetTouch(0);
+//    if (theTouch.phase == TouchPhase.Began)
+//    {
+//        touchStartPos = theTouch.position;
+//    }
+
+//}
+//else if (theTouch.phase == TouchPhase.Moved || theTouch.phase == TouchPhase.Ended)
+//{
+//    touchEndPos = theTouch.position;
+//    float x = touchEndPos.x - touchStartPos.x;
+//    float y = touchEndPos.y - touchStartPos.y;
+
+//    if (Mathf.Abs(x) == 0 && Mathf.Abs(y) == 0)
+//    {
+//        dir = "Tapped";
+//    }
+//    else if (Mathf.Abs(x) > Mathf.Abs(y))
+//    {
+//        dir = x > 0 ? "Up" : "Down";
+//    }
+//    //Set player x pos 
+
+//}

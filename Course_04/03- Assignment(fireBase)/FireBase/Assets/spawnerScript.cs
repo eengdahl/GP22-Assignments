@@ -52,15 +52,12 @@ public class spawnerScript : MonoBehaviour
     }
     public void DestroyCoin(GameObject coin)
     {
-        Debug.Log("ping");
-        // Only keep 100 bullets so that we don't eat up to much memory
         if (_freeCoin.Count == maxCoins)
         {
             Destroy(coin);
             return;
         }
 
-        // Remove it from the scene and deactivate it
         coin.transform.parent = null;
         coin.SetActive(false);
         _freeCoin.AddFirst(coin);
