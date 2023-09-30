@@ -123,10 +123,36 @@ public class SignInScript : MonoBehaviour
                 FirebaseUser newUser = task.Result.User;
                 Debug.LogFormat("User Registerd: {0} ({1})",
                   newUser.DisplayName, newUser.UserId);
-                playButton.interactable = true;
                 status.text = "User Registerd";
+
+                playButton.interactable = true;
             }
         });
+
+
+
+
+
+
+
+        //status.text = "Starting Registration";
+        //auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
+        //{
+        //    if (task.Exception != null)
+        //    {
+        //        Debug.LogWarning(task.Exception);
+        //        status.text = "Registration failed";
+        //    }
+        //    else
+        //    {
+        //        FirebaseUser newUser = task.Result.User;
+        //        Debug.LogFormat("User Registerd: {0} ({1})",
+        //          newUser.DisplayName, newUser.UserId);
+
+        //        playButton.interactable = true;
+        //        status.text = "User Registerd";
+        //    }
+        //});
     }
     public void PlayGame()
     {

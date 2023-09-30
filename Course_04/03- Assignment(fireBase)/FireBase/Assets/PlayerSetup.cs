@@ -47,13 +47,4 @@ public class PlayerSetup : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("gas"))
-        {
-            Debug.Log("Gas");
-            Destroy(other.gameObject);
-        }
-    }
-
 }
