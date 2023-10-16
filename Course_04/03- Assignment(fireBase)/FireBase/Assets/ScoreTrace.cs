@@ -6,8 +6,6 @@ using System;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 
 [Serializable]
 public class RecordedStats
@@ -21,10 +19,6 @@ public class ScoreTrace : MonoBehaviour
 
     public TextMeshProUGUI textMeshPro;
     private pointListener _pointListener;
-
-    private string resterPath;
-    private string resterString;
-
 
 
     public void PlayerSpawned(Vector2 playerPosition)
@@ -54,48 +48,11 @@ public class ScoreTrace : MonoBehaviour
 
     }
 
-    //void CleanFireBase(RecordedStats sendStats)
-    //{
-    //    //empty last message
-    //    string path = /*/"users/" + SignInScript.Instance.GetUserID +/*/ "/messages";
-    //    string jsonString = JsonUtility.ToJson(sendStats);
-
-    //    resterPath = path;
-    //    resterString = jsonString;
-
-    //    FirebaseSaveManager.Instance.CleanData(path, Rester);
-
-    //}
-    //void Rester()
-    //{
-    //    Debug.Log("ping");
-
-    //    PushToFireBase(resterString, resterPath);
-    //}
 
     void PushToFireBase(string stats, string _path)
     {
-        FirebaseSaveManager.Instance.PushData(_path, stats, GetMyStats);
+        FirebaseSaveManager.Instance.PushData(_path, stats);
     }
 
-    public void GetMyStats()
-    {
-        Debug.Log("finalPing");
-    }
 
-    //Load messasges
-    //Upload Messages 
-
-
-    //  {"rules": { "users": { "$uid": {
-    //      ".read": "$uid === auth.uid",
-    //      ".write": "$uid === auth.uid" }
-    //  },
-    //  "games": {
-    //    ".read": "auth != null",
-    //    ".write": "auth != null" },
-    //    "messages": {
-    //     ".read": "auth != null",
-    //    ".write": "auth != null" }
-    //}
 }

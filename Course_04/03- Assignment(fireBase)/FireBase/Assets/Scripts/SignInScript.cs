@@ -50,7 +50,7 @@ public class SignInScript : MonoBehaviour
 
             if (auth.CurrentUser == null)
             {
-                AnonymousSignIn();
+              //  AnonymousSignIn();
                 Debug.Log("anonym sign in0");
             }
             else
@@ -118,7 +118,9 @@ public class SignInScript : MonoBehaviour
         {
             if (task.Exception != null)
             {
+                status.text = "Registration Failed";
                 Debug.LogWarning(task.Exception);
+                return;
             }
             else
             {
@@ -131,35 +133,10 @@ public class SignInScript : MonoBehaviour
             }
         });
 
-
-
-
-
-
-
-        //status.text = "Starting Registration";
-        //auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWithOnMainThread(task =>
-        //{
-        //    if (task.Exception != null)
-        //    {
-        //        Debug.LogWarning(task.Exception);
-        //        status.text = "Registration failed";
-        //    }
-        //    else
-        //    {
-        //        FirebaseUser newUser = task.Result.User;
-        //        Debug.LogFormat("User Registerd: {0} ({1})",
-        //          newUser.DisplayName, newUser.UserId);
-
-        //        playButton.interactable = true;
-        //        status.text = "User Registerd";
-        //    }
-        //});
     }
     public void PlayGame()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
-        // SceneManager.SetActiveScene(SceneManager.GetSceneByName("CharacterSetup"));
     }
 
 

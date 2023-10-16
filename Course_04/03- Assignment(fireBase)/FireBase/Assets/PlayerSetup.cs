@@ -14,7 +14,6 @@ public class PlayerSetup : MonoBehaviour
     SpriteRenderer playerSR;
     FirebaseDatabase db;
     FirebaseAuth auth;
-    // Start is called before the first frame update
     void Start()
     {
         playerSR = GetComponent<SpriteRenderer>();
@@ -28,12 +27,6 @@ public class PlayerSetup : MonoBehaviour
             FirebaseSaveManager.Instance.LoadData("users/" + SignInScript.Instance.GetUserID, playerSprite);
 
         });
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 

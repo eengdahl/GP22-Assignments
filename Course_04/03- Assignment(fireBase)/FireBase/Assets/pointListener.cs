@@ -10,16 +10,6 @@ public class pointListener : MonoBehaviour
     public TMP_Text scoreText;
     public int points;
 
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-
-
-    }
-
-
-
     public void updateScore(int score = 100)
     {
         points += score;

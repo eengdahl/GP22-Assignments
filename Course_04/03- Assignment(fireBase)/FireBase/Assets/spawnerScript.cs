@@ -12,7 +12,6 @@ public class spawnerScript : MonoBehaviour
     public int maxCoins = 10;
     void Start()
     {
-
         InvokeRepeating("SpawnCoin", 1, 100);
         spawnposition = this.transform.position;
         spawnposition.z = 1;
@@ -28,11 +27,9 @@ public class spawnerScript : MonoBehaviour
 
     public GameObject CreateCoin()
     {
-        //if we don't have any free bullets, create a new bullet instead.
         if (_freeCoin.Count == 0)
             return Instantiate(coinPrefab);
 
-        //return the first free bullet from our list
         var freeCoinNode = _freeCoin.First;
         var coin = freeCoinNode.Value;
         _freeCoin.Remove(freeCoinNode);
@@ -42,10 +39,12 @@ public class spawnerScript : MonoBehaviour
 
     public void SpawnCoin()
     {
-        CreateCoin();
+        var tempCoin = CreateCoin();
+        
         spawnposition.x = Random.Range(-10, 10);
 
-        coinPrefab.transform.position = spawnposition;
+        tempCoin.transform.position = spawnposition;
+
         Invoke("SpawnCoin", 0.4f);
 
     }
@@ -56,7 +55,6 @@ public class spawnerScript : MonoBehaviour
             Destroy(coin);
             return;
         }
-
         coin.transform.parent = null;
         coin.SetActive(false);
         _freeCoin.AddFirst(coin);
