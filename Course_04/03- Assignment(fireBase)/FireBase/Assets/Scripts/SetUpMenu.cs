@@ -10,11 +10,15 @@ using UnityEngine.SceneManagement;
 public class SetUpMenu : MonoBehaviour
 {
     public TMP_InputField playerName;
+    public string staticPlayerName;
     public Image spriteImage;
     public Slider colorSlider;
     public Slider spriteSlider;
     public Sprite[] sprites;
     public Button playButton;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +36,7 @@ public class SetUpMenu : MonoBehaviour
         colorSlider.value = loadeduser.color;
         spriteSlider.value = loadeduser.sprite;
         playerName.text = loadeduser.name;
+        SignInScript.Instance.playername = loadeduser.name; ;
     }
 
 

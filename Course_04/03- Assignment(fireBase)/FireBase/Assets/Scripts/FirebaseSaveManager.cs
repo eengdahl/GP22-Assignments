@@ -12,8 +12,10 @@ public class FirebaseSaveManager : MonoBehaviour
     public static FirebaseSaveManager Instance { get { return _instance; } }
 
     public delegate void OnLoadedDelegate(DataSnapshot snapshot);
-    // public delegate void OnLoadedDelegate<T>(List<T> dataList);
+    public delegate void OnMultipleLoadedDelegate<T>(List<T> dataList);
     public delegate void OnSaveDelegate();
+    public delegate void OnPushDelegate();
+    public delegate void OnCleanDelegate();
 
 
 
@@ -48,6 +50,22 @@ public class FirebaseSaveManager : MonoBehaviour
         });
     }
 
+    public void LoadMultipleData<T>(string path, OnMultipleLoadedDelegate<T> onLoadedDelegate)
+    {
+        db.RootReference.Child(path).GetValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+                Debug.LogWarning(task.Exception);
+
+            var child = new List<T>();
+
+            foreach (var item in task.Result.Children)
+                child.Add(JsonUtility.FromJson<T>(item.GetRawJsonValue()));
+
+            onLoadedDelegate(child);
+        });
+    }
+
     public void SaveData(string path, string data, OnSaveDelegate onSaveDelegate = null)
     {
         db.RootReference.Child(path).SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
@@ -57,6 +75,31 @@ public class FirebaseSaveManager : MonoBehaviour
 
             //Call our delegate if it's not null
             onSaveDelegate?.Invoke();
+        });
+    }
+
+    public void CleanData(string path, OnCleanDelegate onCleanDelegate = null)
+    {
+        db.RootReference.Child(path).RemoveValueAsync().ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+                Debug.LogWarning(task.Exception);
+
+            //Call our delegate if it's not null
+            onCleanDelegate?.Invoke();
+        });
+    }
+
+    public void PushData(string path, string data, OnPushDelegate onPushDelegate = null)
+    {
+
+        db.RootReference.Child(path).Push().SetRawJsonValueAsync(data).ContinueWithOnMainThread(task =>
+        {
+            if (task.Exception != null)
+                Debug.LogWarning(task.Exception);
+
+            //Call our delegate if it's not null
+            onPushDelegate?.Invoke();
         });
     }
 

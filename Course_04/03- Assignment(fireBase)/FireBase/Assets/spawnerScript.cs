@@ -42,7 +42,6 @@ public class spawnerScript : MonoBehaviour
 
     public void SpawnCoin()
     {
-        Debug.Log(_freeCoin.Count);
         CreateCoin();
         spawnposition.x = Random.Range(-10, 10);
 

@@ -18,6 +18,8 @@ public class SignInScript : MonoBehaviour
     public TMP_InputField password;
     public TextMeshProUGUI status;
 
+    public string playername;
+
     public Button playButton;
 
     FirebaseAuth auth;

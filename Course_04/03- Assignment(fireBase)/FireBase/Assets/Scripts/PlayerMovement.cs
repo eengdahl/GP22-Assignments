@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     public int score;
     public GameObject spawnTrace;
+
+
+    public Button up, down, left, right, dropPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,34 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerPosition = new Vector3(rb.transform.position.x, rb.transform.position.y, rb.transform.position.z);
 
+        up.onClick.AddListener(Up);
+        down.onClick.AddListener(Down);
+        left.onClick.AddListener(Left);
+        right.onClick.AddListener(Right);
+        dropPoint.onClick.AddListener(Drop);
+
+    }
+    void Left()
+    {
+        playerPosition.x -= speed * 2 * Time.deltaTime;
+    }
+    void Right()
+    {
+        playerPosition.x += speed * 2 * Time.deltaTime;
+    }
+    void Up()
+    {
+        playerPosition.y += speed * 2 * Time.deltaTime;
+    }
+    void Down()
+    {
+        playerPosition.y -= speed * 2 * Time.deltaTime;
+    }
+    void Drop()
+    {
+        Debug.Log("ping");
+        Instantiate(spawnTrace, transform.position, transform.rotation);
+        spawnTrace.GetComponent<ScoreTrace>().PlayerSpawned(this.transform.position);
     }
 
     private void Update()
@@ -54,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Instantiate(spawnTrace, transform.position, transform.rotation);
+            // spawnTrace.GetComponent<ScoreTrace>().PlayerSpawned();
         }
 
     }
