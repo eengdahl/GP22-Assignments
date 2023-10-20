@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     pointListener points;
     Vector3 playerPosition;
-    float speed = 5f;
+    float speed = 40f;
     Rigidbody2D rb;
     public int score;
     public GameObject spawnTrace;
@@ -39,11 +39,11 @@ public class PlayerMovement : MonoBehaviour
     }
     void Up()
     {
-        playerPosition.y += speed * 2 * Time.deltaTime;
+        playerPosition.y += speed / 2 * 2 * Time.deltaTime;
     }
     void Down()
     {
-        playerPosition.y -= speed * 2 * Time.deltaTime;
+        playerPosition.y -= speed / 2 * 2 * Time.deltaTime;
     }
     void Drop()
     {
