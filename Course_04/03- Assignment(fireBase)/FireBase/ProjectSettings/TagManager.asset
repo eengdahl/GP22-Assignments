@@ -6,6 +6,7 @@ TagManager:
   tags:
   - gas
   - coin
+  - GameOver
   layers:
   - Default
   - TransparentFX

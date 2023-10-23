@@ -13,7 +13,7 @@ public class StatinaryGun : MonoBehaviour
 
     bool minusSwap;
 
-    public float rotationSpeed = 20.0f;
+    public float rotationSpeed = 10.0f;
 
     private float targetRotation = -180.0f;
     private float rotationDirection;
@@ -56,8 +56,11 @@ public class StatinaryGun : MonoBehaviour
     }
     public void Shoot()
     {
-        var newBullet = Instantiate(bullet, transform.position, transform.rotation);
-        newBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, transform.rotation.z) * 50, ForceMode2D.Force);
+        var newBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        newBullet.transform.up = this.transform.up.normalized;
+        //newBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, transform.rotation.z) * 50, ForceMode2D.Force);
         Invoke(nameof(Shoot), 1.5f);
     }
+
+
 }

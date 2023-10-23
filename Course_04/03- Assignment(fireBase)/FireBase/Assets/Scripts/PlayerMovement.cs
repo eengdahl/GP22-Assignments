@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     public int score;
     public GameObject spawnTrace;
+    public GameObject gameOver;
 
 
     public Button up, down, left, right, dropPoint;
@@ -90,5 +92,16 @@ public class PlayerMovement : MonoBehaviour
             points.updateScore();
 
         }
+        if (other.CompareTag("Player"))
+        {
+            gameOver.SetActive(true);
+            Invoke(nameof(ChangeScene), 1.5f);
+        }
+    }
+
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
